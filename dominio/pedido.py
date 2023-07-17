@@ -1,9 +1,14 @@
+from Biblioteca.estudiante import Estudiante
+from Biblioteca.libro import Libro
+
+
 class Pedido ():
     contador_pedido = 0
     contador_id = 0
 
     def __init__(self, solicitante: str = None, lista_material: str = None, materia: str = None,
                     fecha_prestamo: str = None, fecha_devolucion: str = None):
+
         Pedido.contador_id += 1
         Pedido.contador_pedido += 1
         self._id = Pedido.contador_pedido
@@ -18,9 +23,9 @@ class Pedido ():
     def id(self):
         return self._id
 
-    @id.setter
-    def id(self, id):
-        self._id = id
+    #@id.setter
+    #def id(self, id):
+        #self._id = id
 
     @property
     def solicitante(self):
@@ -79,14 +84,56 @@ class Pedido ():
     def devolver_material (self):
         return f'{self._solicitante} '
 
+    def mostrar_solicitante(self):
+        print('Solicitante:')
+        print(f'\tNombre: {self.solicitante.nombre.upper()}')
+        print(f'\tApellido: {self.solicitante.apellido.upper()}')
+        print(f'\tCedula: {self.solicitante.cedula}')
+        if isinstance(self.solicitante, Estudiante):
+            print(f'\tTipo: Estudiante')
+        else:
+            print(f'\tTipo: Docente')
+
+
+    def mostrar_materiales(self):
+        print('Listado Materiales'.center(50, '*'))
+        print(f'Cantidad de Mateiriales Pedidos: {len(self.lista_material)}')
+        for material in self.lista_material:
+            if isinstance(material, Libro):
+                print('Libro'.center(50, '*'))
+            else:
+                print('Revista'.center(50, '*'))
+            print(f'\tTitulo: {material.titulo}')
+            print(f'\tAutor: {material.autor}')
+            print(f'\tCantidad Disponible: {material.cantidad_disponible}')
+
+    def mostrar_pedido(self):
+        print('Solicitante:')
+        print(f'\tNombre: {self.solicitante.nombre.upper()}')
+        print(f'\tApellido: {self.solicitante.apellido.upper()}')
+        print(f'\tCedula: {self.solicitante.cedula}')
+        if isinstance(self.solicitante, Estudiante):
+            print(f'\tTipo: Estudiante')
+        else:
+            print(f'\tTipo: Docente')
+        print('Listado Materiales'.center(50, '*'))
+        print(f'Cantidad de Mateiriales Pedidos: {len(self.lista_material)}')
+        for material in self.lista_material:
+            if isinstance(material, Libro):
+                print('Libro'.center(50, '*'))
+            else:
+                print('Revista'.center(50, '*'))
+            print(f'\tTitulo: {material.titulo}')
+            print(f'\tAutor: {material.autor}')
+            print(f'\tCantidad Disponible: {material.cantidad_disponible}')
+
 
 if __name__ == '__main__':
-    #pass
+    pass
     p1 = Pedido(solicitante='estudiante', lista_material='revista', materia='programacion',
                  fecha_prestamo='02/01/2023', fecha_devolucion='15/01/2023')
     print(p1)
     print(f'Solicitamos el Material {p1._lista_material} Solicitante:{p1._solicitante} Materia {p1._materia}')
     print (f'Devuelve el material {p1._solicitante}')
-    # , debito=200.00)
-    # print(obj)
+
 

@@ -1,8 +1,8 @@
-from Biblioteca.pedido import Pedido
+
 from Biblioteca.persona import Persona
 
 
-class Estudiante(Persona, Pedido):
+class Estudiante(Persona):
     contador_estudiante = 0
     contador_id = 0
 
@@ -14,8 +14,7 @@ class Estudiante(Persona, Pedido):
         Persona.__init__(self,cedula=cedula,nombre=nombre, apellido=apellido,
                   email=email, telefono=telefono, direccion=direccion, numero_libro=numero_libro, activo=activo,
                          carrera=carrera, pedir_libro=pedir_libro,devolver_libro=devolver_libro)
-        Pedido.__init__(self, solicitante=solicitante, lista_material=lista_material, materia=materia,
-                        fecha_prestamo=fecha_prestamo, fecha_devolucion=fecha_devolucion)
+
         Estudiante.contador_estudiante += 1
         Estudiante.contador_id += 1
         self._nivel = nivel

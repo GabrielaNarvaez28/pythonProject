@@ -1,8 +1,8 @@
 from Biblioteca.material import Material
-from Biblioteca.pedido import Pedido
 
 
-class Libro(Material, Pedido):
+
+class Libro(Material):
     contador_libro = 0
     contador_id = 0
 
@@ -13,8 +13,7 @@ class Libro(Material, Pedido):
         Material.__init__(self, codigo=codigo, autor=autor, titulo=titulo, anio=anio,
                          editorial=editorial, disponible=disponible, cantidad_disponible=cantidad_disponible,
                          actualizar_disponibilidad=actualizar_disponibilidad)
-        Pedido.__init__(self,solicitante=solicitante, lista_material=lista_material, materia=materia,
-                         fecha_prestamo=fecha_prestamo, fecha_devolucion=fecha_devolucion)
+
         Libro.contador_id += 1
         Libro.contador_libro += 1
         self._libro = Libro.contador_libro
